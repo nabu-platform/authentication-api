@@ -1,4 +1,4 @@
-package be.nabu.libs.authentication.impl;
+package be.nabu.libs.authentication.impl.auth;
 
 import java.security.Principal;
 import java.util.Arrays;

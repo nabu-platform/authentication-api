@@ -1,17 +1,17 @@
-package be.nabu.libs.authentication.impl;
+package be.nabu.libs.authentication.impl.role;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class FileAuthenticator extends BasePasswordAuthenticator {
+public class FileRoleHandler extends BaseRoleHandler {
 	
 	private File root;
 
-	public FileAuthenticator() {}
+	public FileRoleHandler() {}
 	
-	public FileAuthenticator(File root) {
+	public FileRoleHandler(File root) {
 		this.root = root;
 	}
 	

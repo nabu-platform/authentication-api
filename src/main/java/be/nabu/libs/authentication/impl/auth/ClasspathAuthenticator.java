@@ -1,4 +1,4 @@
-package be.nabu.libs.authentication.impl;
+package be.nabu.libs.authentication.impl.auth;
 
 import java.io.IOException;
 import java.io.InputStream;
