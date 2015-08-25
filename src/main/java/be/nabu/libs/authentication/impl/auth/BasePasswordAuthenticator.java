@@ -20,6 +20,10 @@ abstract public class BasePasswordAuthenticator extends BaseRealmHandler impleme
 	@Override
 	public Token authenticate(final String realm, final Principal... credentials) {
 		for (final Principal credential : credentials) {
+			// can't log in as anonymous
+			if (ANONYMOUS.equals(credential.getName())) {
+				continue;
+			}
 			if (credential instanceof BasicPrincipal) {
 				// if he is authenticated, return a valid token
 				if (getRealm("users", realm).containsKey(credential.getName()) && getRealm("users", realm).get(credential.getName()).equals(((BasicPrincipal) credential).getPassword())) {
