@@ -39,7 +39,7 @@ abstract public class BasePasswordAuthenticator extends BaseRealmHandler impleme
 		return token instanceof PasswordToken && equals(((PasswordToken) token).getAuthenticator());
 	}
 
-	private class PasswordToken implements Token {
+	public class PasswordToken implements Token {
 		private final String realm;
 		private final Principal credential;
 		private final Principal[] credentials;

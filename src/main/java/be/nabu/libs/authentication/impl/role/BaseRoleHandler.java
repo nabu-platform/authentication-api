@@ -28,8 +28,12 @@ abstract public class BaseRoleHandler extends BaseRealmHandler implements RoleHa
 			String user = token.getName();
 			Properties realm = getRealm("roles", token.getRealm());
 			for (String role : roles) {
+				// if it's a default role, you automatically have it
+				if (defaultRoles.contains(role)) {
+					continue;
+				}
 				// if the realm doesn't know the role or the user is not in there, stop
-				if (!defaultRoles.contains(role) && (!realm.containsKey(role) || Arrays.asList(realm.getProperty(role).split("[\\s,]+")).contains(user))) {
+				if (!realm.containsKey(role) || !Arrays.asList(realm.getProperty(role).split("[\\s,]+")).contains(user)) {
 					return false;
 				}
 			}
