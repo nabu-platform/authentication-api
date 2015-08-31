@@ -7,8 +7,9 @@ import java.util.List;
 
 import be.nabu.libs.authentication.api.Authenticator;
 import be.nabu.libs.authentication.api.Token;
+import be.nabu.libs.authentication.api.TokenValidator;
 
-public class AcceptAllAuthenticator implements Authenticator {
+public class AcceptAllAuthenticator implements Authenticator, TokenValidator {
 
 	@Override
 	public Token authenticate(final String realm, final Principal...credentials) {

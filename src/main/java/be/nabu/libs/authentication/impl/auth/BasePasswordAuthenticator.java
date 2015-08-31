@@ -7,10 +7,11 @@ import java.util.List;
 
 import be.nabu.libs.authentication.api.Authenticator;
 import be.nabu.libs.authentication.api.Token;
+import be.nabu.libs.authentication.api.TokenValidator;
 import be.nabu.libs.authentication.api.principals.BasicPrincipal;
 import be.nabu.libs.authentication.impl.BaseRealmHandler;
 
-abstract public class BasePasswordAuthenticator extends BaseRealmHandler implements Authenticator {
+abstract public class BasePasswordAuthenticator extends BaseRealmHandler implements Authenticator, TokenValidator {
 	
 	/**
 	 * defaults to 1 day

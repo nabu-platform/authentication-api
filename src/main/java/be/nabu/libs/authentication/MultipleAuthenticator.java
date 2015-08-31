@@ -25,15 +25,5 @@ public class MultipleAuthenticator implements Authenticator {
 		return null;
 	}
 
-	@Override
-	public boolean isValid(Token token) {
-		boolean isValid = false;
-		for (Authenticator authenticator : authenticators) {
-			isValid = authenticator.isValid(token);
-			if (isValid) {
-				break;
-			}
-		}
-		return isValid;
-	}
+	
 }
