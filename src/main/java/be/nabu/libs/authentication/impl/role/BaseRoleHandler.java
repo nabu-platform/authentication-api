@@ -15,27 +15,23 @@ abstract public class BaseRoleHandler extends BaseRealmHandler implements RoleHa
 	private Set<String> defaultRoles = new HashSet<String>(Arrays.asList(USER));
 	
 	@Override
-	public boolean hasRole(Token token, String...roles) {
+	public boolean hasRole(Token token, String role) {
 		// check anonymous roles
 		if (token == null) {
-			for (String role : roles) {
-				if (!anonymousRoles.contains(role)) {
-					return false;
-				}
+			if (!anonymousRoles.contains(role)) {
+				return false;
 			}
 		}
 		else {
 			String user = token.getName();
 			Properties realm = getRealm("roles", token.getRealm());
-			for (String role : roles) {
-				// if it's a default role, you automatically have it
-				if (defaultRoles.contains(role)) {
-					continue;
-				}
-				// if the realm doesn't know the role or the user is not in there, stop
-				if (!realm.containsKey(role) || !Arrays.asList(realm.getProperty(role).split("[\\s,]+")).contains(user)) {
-					return false;
-				}
+			// if it's a default role, you automatically have it
+			if (defaultRoles.contains(role)) {
+				return true;
+			}
+			// if the realm doesn't know the role or the user is not in there, stop
+			if (!realm.containsKey(role) || !Arrays.asList(realm.getProperty(role).split("[\\s,]+")).contains(user)) {
+				return false;
 			}
 		}
 		return true;
