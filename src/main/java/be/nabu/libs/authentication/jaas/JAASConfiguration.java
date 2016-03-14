@@ -53,6 +53,10 @@ public class JAASConfiguration extends Configuration {
 		this.entries.put(name, entries);
 	}
 	
+	public void remove(String name) {
+		this.entries.remove(name);
+	}
+	
 	public static AppConfigurationEntry newKerberosEntry(Map<String, String> options) {
 		return new AppConfigurationEntry("com.sun.security.auth.module.Krb5LoginModule", LoginModuleControlFlag.REQUIRED, options);
 	}
