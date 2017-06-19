@@ -47,12 +47,12 @@ public class ImpersonateToken implements RefreshableToken, WrappedToken {
 
 	@Override
 	public Date getValidUntil() {
-		return originalToken.getValidUntil();
+		return originalToken == null ? null : originalToken.getValidUntil();
 	}
 	
 	@Override
 	public List<Principal> getCredentials() {
-		return originalToken.getCredentials();
+		return originalToken == null ? null : originalToken.getCredentials();
 	}
 	
 	@Override
