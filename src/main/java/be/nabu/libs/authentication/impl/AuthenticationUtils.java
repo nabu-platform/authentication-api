@@ -1,6 +1,8 @@
 package be.nabu.libs.authentication.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
+import java.net.URLDecoder;
 import java.security.Principal;
 
 import be.nabu.libs.authentication.api.principals.BasicPrincipal;
@@ -40,7 +42,12 @@ public class AuthenticationUtils {
 			}
 		}
 		if (username != null) {
+			username = decodeURL(username);
+			if (password != null) {
+				password = decodeURL(password);
+			}
 			if (domain != null) {
+				domain = decodeURL(domain);
 				return new NTLMPrincipalImpl(domain, username, password, null);	
 			}
 			else {
@@ -48,5 +55,20 @@ public class AuthenticationUtils {
 			}
 		}
 		return null;
+	}
+	
+	private static String decodeURL(String uri) {
+		try {
+			// if you run this code:
+			// System.out.println(URLDecoder.decode("abc%00de", "UTF-8"));
+			// it will output "abc"
+			if (uri.contains("%00")) {
+				throw new RuntimeException("Unsafe string for decoding");
+			}
+			return URLDecoder.decode(uri, "UTF-8");
+		}
+		catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
