@@ -71,4 +71,12 @@ public class ImpersonateToken implements RefreshableToken, WrappedToken {
 		}
 		return null;
 	}
+	
+	// needed for auto-reconstruct
+	public void setValidUntil(Date date) {
+		// do nothing
+	}
+	public void setCredentials(List<Principal> credentials) {
+		// do nothing
+	}
 }
