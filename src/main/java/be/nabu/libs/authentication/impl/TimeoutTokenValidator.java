@@ -9,7 +9,7 @@ public class TimeoutTokenValidator implements TokenValidator {
 
 	@Override
 	public boolean isValid(Token token) {
-		return token.getValidUntil() == null || token.getValidUntil().after(new Date());
+		return token != null && (token.getValidUntil() == null || token.getValidUntil().after(new Date()));
 	}
 
 }
