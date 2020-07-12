@@ -6,12 +6,13 @@ import java.util.List;
 
 import be.nabu.libs.authentication.api.Token;
 import be.nabu.libs.authentication.api.principals.BasicPrincipal;
+import be.nabu.libs.authentication.api.principals.TypedPrincipal;
 
-public class BasicPrincipalImpl implements Token, BasicPrincipal {
+public class BasicPrincipalImpl implements Token, BasicPrincipal, TypedPrincipal {
 
 	private static final long serialVersionUID = 1L;
 
-	private String name, password, realm;
+	private String name, password, realm, type;
 
 	public BasicPrincipalImpl() {
 		// auto construct
@@ -57,6 +58,14 @@ public class BasicPrincipalImpl implements Token, BasicPrincipal {
 	@Override
 	public List<Principal> getCredentials() {
 		return null;
+	}
+
+	@Override
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }
