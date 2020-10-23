@@ -1,8 +1,9 @@
 package be.nabu.libs.authentication.impl;
 
 import be.nabu.libs.authentication.api.Device;
+import be.nabu.libs.authentication.api.principals.DevicePrincipal;
 
-public class BasicPrincipalWithDeviceImpl extends BasicPrincipalImpl {
+public class BasicPrincipalWithDeviceImpl extends BasicPrincipalImpl implements DevicePrincipal {
 	private static final long serialVersionUID = 1L;
 	
 	private Device device;
@@ -16,6 +17,7 @@ public class BasicPrincipalWithDeviceImpl extends BasicPrincipalImpl {
 		this.device = device;
 	}
 	
+	@Override
 	public Device getDevice() {
 		return device;
 	}
