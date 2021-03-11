@@ -23,13 +23,13 @@ public interface Token extends Principal, Serializable {
 	 */
 	public List<Principal> getCredentials();
 	/**
-	 * A globally unique and _anonymous_ (GDPR and all that) id
+	 * A globally unique and _anonymous_ (GDPR and all that) id that identifies the identity. it is specifically not called user id as that has some human undertones
 	 * This can be used to store security settings without knowing the exact context
 	 * For example logging the owner, without knowing where he exists (CMS, SSO,...)
 	 * This will almost always be a UUID, but to leave the door open to other generation schemes, it is defined as a string
 	 * At higher levels we can enforce the uuid-ness of this id if relevant
 	 */
-	public default String getId() {
+	public default String getAuthenticationId() {
 		return null;
 	}
 }
