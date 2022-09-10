@@ -12,7 +12,7 @@ public class BasicPrincipalImpl implements Token, BasicPrincipal, TypedPrincipal
 
 	private static final long serialVersionUID = 1L;
 
-	private String name, password, realm, type;
+	private String name, password, realm, type, subType;
 
 	public BasicPrincipalImpl() {
 		// auto construct
@@ -66,6 +66,14 @@ public class BasicPrincipalImpl implements Token, BasicPrincipal, TypedPrincipal
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	@Override
+	public String getSubType() {
+		return subType;
+	}
+	public void setSubType(String subType) {
+		this.subType = subType;
 	}
 
 }
