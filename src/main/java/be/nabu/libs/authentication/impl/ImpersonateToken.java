@@ -15,6 +15,7 @@ public class ImpersonateToken implements RefreshableToken, WrappedToken {
 	private Token originalToken;
 	private String realm;
 	private String name;
+	private String authenticationId;
 	
 	public ImpersonateToken() {
 		// auto
@@ -78,5 +79,13 @@ public class ImpersonateToken implements RefreshableToken, WrappedToken {
 	}
 	public void setCredentials(List<Principal> credentials) {
 		// do nothing
+	}
+
+	@Override
+	public String getAuthenticationId() {
+		return authenticationId;
+	}
+	public void setAuthenticationId(String authenticationId) {
+		this.authenticationId = authenticationId;
 	}
 }

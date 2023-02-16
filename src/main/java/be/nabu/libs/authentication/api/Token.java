@@ -32,4 +32,36 @@ public interface Token extends Principal, Serializable {
 	public default String getAuthenticationId() {
 		return null;
 	}
+	
+	/**
+	 * The (logical) name of the service that has created the authentication
+	 */
+	public default String getAuthenticator() {
+		return null;
+	}
+	/**
+	 * One identity (authentication id) might have multiple tokens over time
+	 * The token id is the identifier of that specific token, usually resolvable by the authenticator
+	 */
+	public default String getTokenId() {
+		return null;
+	}
+	/**
+	 * If this token is actually issued to someone else impersonating a user, this is the equivalent of the authentication id for that impersonator
+	 */
+	public default String getImpersonatorId() {
+		return null;
+	}
+	/**
+	 * The equivalent of the "name" for the impersonator
+	 */
+	public default String getImpersonator() {
+		return null;
+	}
+	/**
+	 * The realm of the impersonator, usually the same as the user
+	 */
+	public default String getImpersonatorRealm() {
+		return null;
+	}
 }

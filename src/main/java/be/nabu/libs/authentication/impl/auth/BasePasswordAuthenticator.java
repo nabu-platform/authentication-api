@@ -37,7 +37,7 @@ abstract public class BasePasswordAuthenticator extends BaseRealmHandler impleme
 
 	@Override
 	public boolean isValid(Token token) {
-		return token instanceof PasswordToken && equals(((PasswordToken) token).getAuthenticator());
+		return token instanceof PasswordToken && equals(((PasswordToken) token).getPasswordAuthenticator());
 	}
 
 	public class PasswordToken implements Token {
@@ -74,7 +74,7 @@ abstract public class BasePasswordAuthenticator extends BaseRealmHandler impleme
 			return Arrays.asList(credentials);
 		}
 		
-		public BasePasswordAuthenticator getAuthenticator() {
+		public BasePasswordAuthenticator getPasswordAuthenticator() {
 			return BasePasswordAuthenticator.this;
 		}
 	}
